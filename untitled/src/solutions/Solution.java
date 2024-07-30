@@ -9,9 +9,8 @@ public class Solution {
         head.next = head1;
         head1.next = head2;
 
-        //int result = getDecimalValue(head);
-        //System.out.println(result);
-        getDecimalValue(head);
+        int result = getDecimalValue(head);
+        System.out.println(result);
     }
 
     public static class ListNode {
@@ -22,10 +21,35 @@ public class Solution {
         ListNode(int val, ListNode next) {this.val = val; this.next = next;}
     }
 
-    public static void getDecimalValue(ListNode head) {
+    public static int getDecimalValue(ListNode head) {
+        //Count how many node in the LinkedList
+        ListNode currentCount = new ListNode();
+        currentCount = head;
+        int count = -1;
+        while (currentCount != null) {
+            count++;
+            currentCount = currentCount.next;
+        }
+
+        //Start calculate
         ListNode current = new ListNode();
         current = head;
-        show(current);
+        int result = 0;
+        while (current != null) {
+            result = result + current.val*getPow(count);
+            count--;
+            current = current.next;
+        }
+    return result;
+    }
+
+    public static int getPow(int n) {
+        if (n == 0) return 1;
+        if (n == 1) return 2;
+        int result = 2;
+        for (int i = 2; i <= n; i++)
+            result = result * 2;
+        return result;
     }
 
     public static void show(ListNode head) {
