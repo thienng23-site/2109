@@ -9,8 +9,9 @@ public class Solution {
         head.next = head1;
         head1.next = head2;
 
-        int result = getDecimalValue(head);
-        System.out.println(result);
+        //int result = getDecimalValue(head);
+        //System.out.println(result);
+        getDecimalValue(head);
     }
 
     public static class ListNode {
@@ -21,7 +22,18 @@ public class Solution {
         ListNode(int val, ListNode next) {this.val = val; this.next = next;}
     }
 
-    public static int getDecimalValue(ListNode head) {
-
+    public static void getDecimalValue(ListNode head) {
+        ListNode current = new ListNode();
+        current = head;
+        show(current);
     }
+
+    public static void show(ListNode head) {
+        if (head != null) {
+            System.out.print(head.val);
+            show(head.next);
+        }
+    }
+
+
 }
